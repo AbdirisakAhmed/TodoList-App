@@ -44,6 +44,18 @@ class App extends React.Component {
   
 
   }
+//Remove Work
+   removeItem = (id) => {
+
+    const remove = this.state.myWorks.filter(oneItem => (
+    oneItem.id !== id))
+    this.setState({
+      myWorks: remove
+    })
+   }
+
+  
+
   //Create Function which add each Work
   addItem = (newJob) => {
     const newObject = {
@@ -62,11 +74,12 @@ class App extends React.Component {
     <div className="App">
       <div className="header" >
    <h1><span class="styling">TODO</span>List App</h1>
-   <FormList newWork={this.addItem}/>
+   <FormList newWork={this.addItem} />
 
    </div>
    <WorkList newItem={this.state.myWorks} 
-    toggleItem={this.toggleItem}/>
+    toggleItem={this.toggleItem}
+    delete= {this.removeItem}/>
     </div>
   );
 }
